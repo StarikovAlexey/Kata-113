@@ -6,8 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String HOST = "jdbc:mysql://localhost:3306";
+    private static final String URL = "jdbc:mysql://localhost:3306/kata_test";
     private static final String LOGIN = "root";
     private static final String PASSWORD = "root";
 
@@ -16,7 +15,7 @@ public class Util {
         try {
             Driver driver = new com.mysql.cj.jdbc.Driver();
             DriverManager.registerDriver(driver);
-            connection = DriverManager.getConnection(HOST, LOGIN, PASSWORD);
+            connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
 
         } catch (SQLException e) {
             e.printStackTrace();

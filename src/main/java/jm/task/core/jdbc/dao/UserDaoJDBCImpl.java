@@ -18,7 +18,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void createUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS kata_test.users" +
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS users" +
                     "(id mediumint not null auto_increment," +
                     " name VARCHAR(50), " +
                     "lastname VARCHAR(50), " +
@@ -32,7 +32,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate("Drop table if exists mybasetest.users");
+            statement.executeUpdate("Drop table if exists users");
             System.out.println("Таблица удалена");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,7 +54,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void removeUserById(long id) {
         try (Statement statement = connection.createStatement()) {
-            String sql = "DELETE FROM kata_test.users where id";
+            String sql = "DELETE FROM users where id";
             statement.executeUpdate(sql);
             System.out.println("User удален");
         } catch (SQLException e) {
@@ -64,7 +64,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public List<User> getAllUsers() {
         List<User> allUser = new ArrayList<>();
-        String sql = "SELECT id, name, lastName, age from kata_test.users";
+        String sql = "SELECT id, name, lastName, age from users";
 
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
@@ -85,7 +85,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void cleanUsersTable() {
-        String sql = "DELETE FROM kata_test.users";
+        String sql = "DELETE FROM users";
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
             System.out.println("Таблица очищена");
