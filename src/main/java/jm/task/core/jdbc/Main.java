@@ -1,38 +1,30 @@
 package jm.task.core.jdbc;
 
+import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import org.apache.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class Main {
     private static final UserService userService = new UserServiceImpl();
-    private static final User user1 = new User("Max", "Star", (byte) 7);
-    private static final User user2 = new User("Anna", "Star", (byte) 8);
-    private static final User user3 = new User("Alex", "Star", (byte) 37);
-    private static final User user4 = new User("Jack", "Poo", (byte) 45);
+    private static Logger log = Logger.getLogger(UserDaoJDBCImpl.class);
 
     public static void main(String[] args) {
         userService.createUsersTable();
-
-        userService.saveUser(user1.getName(), user1.getLastName(), user1.getAge());
-        userService.saveUser(user2.getName(), user2.getLastName(), user2.getAge());
-        userService.saveUser(user3.getName(), user3.getLastName(), user3.getAge());
-        userService.saveUser(user4.getName(), user4.getLastName(), user4.getAge());
-
-
-        System.out.println(Arrays.toString(userService.getAllUsers().toArray()));
-
-        System.out.println("Пользователи выведены");
-
+        userService.saveUser("Alan", "Star", (byte) 37);
+        userService.saveUser("Anna", "Star", (byte) 35);
+        userService.saveUser("Max", "Light", (byte) 8);
+        userService.saveUser("Jack", "Poo", (byte) 45);
+        log.info("Users in table: ");
+        log.info(Arrays.toString(userService.getAllUsers().toArray()));
         userService.removeUserById(2);
-
+        log.info("Users in table: ");
+        log.info(Arrays.toString(userService.getAllUsers().toArray()));
         userService.cleanUsersTable();
-
         userService.dropUsersTable();
-
-
     }
 }

@@ -24,11 +24,11 @@ public class UserDaoJDBCImpl implements UserDao {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();
-            log.info("Таблица создана!");
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        log.info("Table created!");
     }
 
     public void dropUsersTable() {
@@ -36,24 +36,24 @@ public class UserDaoJDBCImpl implements UserDao {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();
-            log.info("Таблица удалена!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        log.info("Table deleted!");
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        String sql = "INSERT INTO kata_test.users(name, lastname, age) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users(name, lastname, age) VALUES (?, ?, ?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             statement.setString(2, lastName);
             statement.setByte(3, age);
             statement.executeUpdate();
-            log.info("Пользователь с именем " + name + " и фамилией " + lastName + " добавлен!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        log.info("User " + name + " " + lastName + " added!");
     }
 
     public void removeUserById(long id) {
@@ -62,10 +62,10 @@ public class UserDaoJDBCImpl implements UserDao {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setLong(1, id);
             statement.executeUpdate();
-            log.info("Пользователь с ID " + id + " удален!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        log.info("User ID " + id + " deleted!");
     }
 
     public List<User> getAllUsers() {
@@ -96,9 +96,9 @@ public class UserDaoJDBCImpl implements UserDao {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();
-            log.info("Таблица очищена!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        log.info("Table cleared");
     }
 }
