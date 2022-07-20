@@ -1,13 +1,11 @@
 package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
-import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import org.apache.log4j.Logger;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class Main {
     private static final UserService userService = new UserServiceImpl();
