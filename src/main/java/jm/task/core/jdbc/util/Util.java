@@ -1,8 +1,5 @@
 package jm.task.core.jdbc.util;
 
-import org.apache.log4j.Logger;
-import org.hibernate.event.internal.DefaultResolveNaturalIdEventListener;
-
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;

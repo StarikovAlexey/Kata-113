@@ -22,7 +22,7 @@ public class Main {
         userService.removeUserById(2);
         log.info("Users in table: ");
         log.info(Arrays.toString(userService.getAllUsers().toArray()));
-        //userService.cleanUsersTable();
-       // userService.dropUsersTable();
+        userService.cleanUsersTable();
+        userService.dropUsersTable();
     }
 }
